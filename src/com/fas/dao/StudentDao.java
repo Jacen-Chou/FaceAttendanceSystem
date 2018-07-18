@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.fas.util.DBUtil;
 import com.fas.vo.Student;
+import com.sun.org.apache.regexp.internal.recompile;
 
 public class StudentDao {
 	
@@ -29,8 +30,8 @@ public class StudentDao {
 				s.setStuName(rs.getString("stuname"));
 				s.setStuPassword_encrypt(rs.getString("stupassword"));
 				s.setStuEmail(rs.getString("stuemail"));
-				s.setStuData(rs.getString("studata"));
 				s.setStuSalt(rs.getString("stusalt"));
+				s.setStuIsRegistered(rs.getString("stuisregistered"));
 				list.add(s);
 			}
 		} catch (SQLException e) {
@@ -56,8 +57,8 @@ public class StudentDao {
 				s.setStuName(rs.getString("stuname"));
 				s.setStuPassword_encrypt(rs.getString("stupassword"));
 				s.setStuEmail(rs.getString("stuemail"));
-				s.setStuData(rs.getString("studata"));
 				s.setStuSalt(rs.getString("stusalt"));
+				s.setStuIsRegistered(rs.getString("stuisregistered"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -71,14 +72,14 @@ public class StudentDao {
 	//²åÈë
 	public void insertStu(Student s) {
 		util.getConnection();
-		sql = "insert into student(stuid, stuname, stupassword, stuemail, studata, stusalt) values(?,?,?,?,?,?)";
+		sql = "insert into student(stuid, stuname, stupassword, stuemail, stusalt, stuisregistered) values(?,?,?,?,?,?)";
 		List<Object> param = new ArrayList<Object>();
 		param.add(s.getStuId());
 		param.add(s.getStuName());
 		param.add(s.getStuPassword());
 		param.add(s.getStuEmail());
-		param.add(s.getStuData());
 		param.add(s.getStuSalt());
+		param.add(s.getStuIsRegistered());
 		util.update(sql, param);
 		util.close();
 	}
@@ -96,13 +97,13 @@ public class StudentDao {
 	//¸üÐÂ
 	public void updateStu(Student s) {
 		util.getConnection();
- 		String sql = "update student set stuname=?, stupassword=?, stuemail=?, studata=?, stusalt=? where stuid=?";
+ 		String sql = "update student set stuname=?, stupassword=?, stuemail=?, studata=?, stusalt=?, stuisregistered=? where stuid=?";
  		List<Object> param = new ArrayList<Object>();
 		param.add(s.getStuName());
 		param.add(s.getStuPassword());
 		param.add(s.getStuEmail());
-		param.add(s.getStuData());
 		param.add(s.getStuSalt());
+		param.add(s.getStuIsRegistered());
 		param.add(s.getStuId());
 		util.update(sql, param);
 		util.close();

@@ -11,11 +11,17 @@ public class Student {
 	private String stuName;
 	private String stuPassword;
 	private String stuEmail;
-	private String stuData;
 	private String stuSalt;
+	private String stuIsRegistered;
 	
 	public String getStuSalt() {
 		return stuSalt;
+	}
+	public String getStuIsRegistered() {
+		return stuIsRegistered;
+	}
+	public void setStuIsRegistered(String stuIsRegistered) {
+		this.stuIsRegistered = stuIsRegistered;
 	}
 	public void setStuSalt(String stuSalt) {
 		this.stuSalt = stuSalt;
@@ -49,12 +55,6 @@ public class Student {
 	}
 	public void setStuEmail(String stuEmail) {
 		this.stuEmail = stuEmail;
-	}
-	public String getStuData() {
-		return stuData;
-	}
-	public void setStuData(String stuData) {
-		this.stuData = stuData;
 	}
 
 }
