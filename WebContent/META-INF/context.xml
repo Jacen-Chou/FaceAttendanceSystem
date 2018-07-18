@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+	<!-- 
+	   mail.debug：是否启动debug模式，debug模式会在控制台打印出发送邮件时交互的信息；
+       mail.smtp.auth：是否需要登录认证；
+       mail.transport.protocol：发送邮件协议；
+    -->
+    <Context>  
+        <Resource name="mail/Session" auth="Container"  
+                  type="javax.mail.Session"  
+                  mail.debug="true"  
+                  mail.smtp.auth="true"  
+                  mail.smtp.host="smtp.163.com"
+                  mail.transport.protocol="smtp"/>  
+    </Context>
