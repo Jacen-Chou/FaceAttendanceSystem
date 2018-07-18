@@ -78,7 +78,7 @@ public class StudentDao {
 		List<Object> param = new ArrayList<Object>();
 		String salt = GetStringRandom.getStringRandom(5);
 		String password = s.getStuPassword();
-		String passwordEncrypt = PasswordEncryptUtil.SHA512((PasswordEncryptUtil.SHA512(password, "SHA-512") + salt), "SHA-512");
+		String passwordEncrypt = PasswordEncryptUtil.SHA512((PasswordEncryptUtil.SHA512(password) + salt));
 		param.add(s.getStuId());
 		param.add(s.getStuName());
 		param.add(passwordEncrypt);
@@ -103,13 +103,10 @@ public class StudentDao {
 		util.getConnection();
  		String sql = "update student set stuname=?, stupassword=?, stuemail=?, stusalt=?, stufaceisregistered=? where stuid=?";
  		List<Object> param = new ArrayList<Object>();
- 		String salt = GetStringRandom.getStringRandom(5);
-		String password = s.getStuPassword();
-		String passwordEncrypt = PasswordEncryptUtil.SHA512((PasswordEncryptUtil.SHA512(password, "SHA-512") + salt), "SHA-512");
 		param.add(s.getStuName());
-		param.add(passwordEncrypt);
+		param.add(s.getStuPassword());
 		param.add(s.getStuEmail());
-		param.add(salt);
+		param.add(s.getStuSalt());
 		param.add(s.getStuFaceIsRegistered());
 		param.add(s.getStuId());
 		util.update(sql, param);

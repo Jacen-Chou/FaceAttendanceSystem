@@ -17,12 +17,6 @@ public class Student {
 	public String getStuSalt() {
 		return stuSalt;
 	}
-	public String getStuFaceIsRegistered() {
-		return stuFaceIsRegistered;
-	}
-	public void setStuFaceIsRegistered(String stuIsRegistered) {
-		this.stuFaceIsRegistered = stuIsRegistered;
-	}
 	public void setStuSalt(String stuSalt) {
 		this.stuSalt = stuSalt;
 	}
@@ -49,6 +43,12 @@ public class Student {
 	}
 	public void setStuEmail(String stuEmail) {
 		this.stuEmail = stuEmail;
+	}
+	public String getStuFaceIsRegistered() {
+		return stuFaceIsRegistered;
+	}
+	public void setStuFaceIsRegistered(String stuIsRegistered) {
+		this.stuFaceIsRegistered = stuIsRegistered;
 	}
 
 }

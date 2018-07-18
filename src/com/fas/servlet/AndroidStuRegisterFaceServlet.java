@@ -46,7 +46,7 @@ public class AndroidStuRegisterFaceServlet extends HttpServlet {
         response.setContentType("text/html;charset=utf-8");
         request.setCharacterEncoding("UTF-8");
 
-        //根据标示名获取JSP文件中表单所包含的参数
+        //根据标示名获取表单所包含的参数
         String id = request.getParameter("id");
         //String registereFace = request.getParameter("data");
         String result;

@@ -2,6 +2,7 @@ package com.fas.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,22 +11,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fas.dao.AttendanceDao;
-import com.fas.dao.StudentDao;
 import com.fas.service.StudentService;
 import com.fas.vo.Attendance;
-import com.fas.vo.Student;
+import com.sun.xml.internal.ws.api.pipe.helper.AbstractFilterTubeImpl;
 
 /**
- * Servlet implementation class AndroidAttendanceServlet
+ * Servlet implementation class AndroidQueryAllAttByIdServlet
  */
-@WebServlet("/AndroidAttendanceServlet")
-public class AndroidAttendanceServlet extends HttpServlet {
+@WebServlet("/AndroidQueryAllAttByIdServlet")
+public class AndroidQueryAllAttByIdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AndroidAttendanceServlet() {
+	public AndroidQueryAllAttByIdServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -47,21 +47,19 @@ public class AndroidAttendanceServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
 		// 设置客户端的解码方式为utf-8
 		response.setContentType("text/html;charset=utf-8");
 		request.setCharacterEncoding("UTF-8");
 
 		// 根据标示名获取表单所包含的参数
 		String id = request.getParameter("id");
-		String judge = request.getParameter("if_success");
-		System.out.println(judge);
-		String result;
-
-		StudentService studentService = new StudentService();
-		result = studentService.AndroidAttendanceService(id, judge);
 
 		PrintWriter out = response.getWriter();// 回应请求
+		String result = "";
+		
+		StudentService studentService = new StudentService();
+		result = studentService.AndroidQueryAllAttByIdService(id);
+
 		out.write(result);
 		out.flush();
 		out.close();

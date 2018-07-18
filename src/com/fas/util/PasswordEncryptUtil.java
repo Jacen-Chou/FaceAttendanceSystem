@@ -29,16 +29,16 @@ public class PasswordEncryptUtil {
 	 * @param strSourceText
 	 * @return
 	 */
-	public static String SHA512(String strText, String strType) {
+	public static String SHA512(String strText) {
 		//返回值
-		String strResult = null;
+		String strResult = "";
 
 		//是否是有效字符串
 		if (strText != null && strText.length() > 0) {
 			try {
-				//SHA 加密开始
+				//SHA加密开始
 				//创建加密对象，并传入加密类型
-				MessageDigest messageDigest = MessageDigest.getInstance(strType);
+				MessageDigest messageDigest = MessageDigest.getInstance("SHA-512");
 				//传入要加密的字符串
 				messageDigest.update(strText.getBytes());
 				//得到 byte类型结果

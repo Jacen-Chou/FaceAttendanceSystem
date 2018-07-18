@@ -1,5 +1,7 @@
 package com.fas.service;
 
+import java.util.List;
+
 import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
 
 import com.fas.dao.AttendanceDao;
@@ -28,7 +30,7 @@ public class StudentService {
 
 		s = stuDao.queryStuById(id);
 		if (s.getStuId() == null) {
-			// 当前用户id不存在
+			// 当前用户id不存在，即可注册
 			s.setStuId(id);
 			s.setStuName(name);
 			s.setStuPassword(password);
@@ -36,7 +38,7 @@ public class StudentService {
 			stuDao.insertStu(s);
 			return "success";
 		} else {
-			return "id already exists.";
+			return "fail";
 		}
 
 	}
@@ -56,9 +58,13 @@ public class StudentService {
 		s = stuDao.queryStuById(id);
 
 		String salt = s.getStuSalt();
-		String password_encrypt = PasswordEncryptUtil.SHA512((PasswordEncryptUtil.SHA512(password, "SHA-512") + salt),"SHA-512");
-
-		if (id.equals(s.getStuId()) && password_encrypt.equals(s.getStuPassword())) {
+		System.out.println(salt);
+		System.out.println((PasswordEncryptUtil.SHA512(password)));
+		System.out.println((PasswordEncryptUtil.SHA512(password) + salt));
+		System.out.println(PasswordEncryptUtil.SHA512((PasswordEncryptUtil.SHA512(password) + salt)));
+		String passwordEncrypt = PasswordEncryptUtil.SHA512((PasswordEncryptUtil.SHA512(password) + salt));
+		String passwordDatabase = s.getStuPassword();
+		if (id.equals(s.getStuId()) && passwordEncrypt.equals(passwordDatabase)) {
 			return "success";
 		} else {
 			return "fail";
@@ -143,5 +149,18 @@ public class StudentService {
 		} else {
 			return "fail";
 		}
+	}
+	
+	
+	public String AndroidQueryAllAttByIdService(String id) {
+		
+		AttendanceDao attendanceDao = new AttendanceDao();
+		List<Attendance> list = attendanceDao.queryAttendanceById(id);
+		
+		String result = "";
+		for (Attendance e : list) {
+			result = result + "+" + e.toString();
+		}
+		return result;
 	}
 }

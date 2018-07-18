@@ -41,20 +41,22 @@ public class AttendanceDao {
 		return list;
 	}
 
-	// 根据id查询一条记录
-	public Attendance queryAttendanceById(String id) {
+	// 根据id查询记录
+	public List<Attendance> queryAttendanceById(String id) {
 		util.getConnection();
 		sql = "select * from attendance where id=?";
-		Attendance attendance = new Attendance();
+		List<Attendance> list = new ArrayList<Attendance>();
 		List<Object> param = new ArrayList<Object>();
 		param.add(id);
 		rs = util.query(sql, param);
 		try {
 			if (rs.next()) {
+				Attendance attendance = new Attendance();
 				attendance.setId(rs.getString("id"));
 				attendance.setName(rs.getString("name"));
 				attendance.setDate(rs.getDate("date"));
 				attendance.setTime(rs.getTime("time"));
+				list.add(attendance);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -62,7 +64,7 @@ public class AttendanceDao {
 		} finally {
 			util.close();
 		}
-		return attendance;
+		return list;
 	}
 
 	// 插入
