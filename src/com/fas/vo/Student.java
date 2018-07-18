@@ -12,16 +12,16 @@ public class Student {
 	private String stuPassword;
 	private String stuEmail;
 	private String stuSalt;
-	private String stuIsRegistered;
+	private String stuFaceIsRegistered;
 	
 	public String getStuSalt() {
 		return stuSalt;
 	}
-	public String getStuIsRegistered() {
-		return stuIsRegistered;
+	public String getStuFaceIsRegistered() {
+		return stuFaceIsRegistered;
 	}
-	public void setStuIsRegistered(String stuIsRegistered) {
-		this.stuIsRegistered = stuIsRegistered;
+	public void setStuFaceIsRegistered(String stuIsRegistered) {
+		this.stuFaceIsRegistered = stuIsRegistered;
 	}
 	public void setStuSalt(String stuSalt) {
 		this.stuSalt = stuSalt;
@@ -42,12 +42,6 @@ public class Student {
 		return stuPassword;
 	}
 	public void setStuPassword(String stuPassword) {
-		String salt = GetStringRandom.getStringRandom(5);
-		String encrypt = PasswordEncryptUtil.SHA512((PasswordEncryptUtil.SHA512(stuPassword, "SHA-512") + salt), "SHA-512");
-		setStuSalt(salt);
-		this.stuPassword = encrypt;
-	}
-	public void setStuPassword_encrypt(String stuPassword) {
 		this.stuPassword = stuPassword;
 	}
 	public String getStuEmail() {

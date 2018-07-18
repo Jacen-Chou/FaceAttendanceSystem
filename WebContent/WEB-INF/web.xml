@@ -9,31 +9,52 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
-  <servlet>
-    <servlet-name>AndroidStuRegister</servlet-name>
-    <servlet-class>com.fas.servlet.AndroidStuRegisterServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>AndroidLogin</servlet-name>
-    <servlet-class>com.fas.servlet.AndroidLoginServlet</servlet-class>
-  </servlet>
   <servlet>
     <servlet-name>MailTest</servlet-name>
     <servlet-class>com.fas.test.MailTest</servlet-class>
   </servlet>
-  
-  
+  <servlet-mapping>
+    <servlet-name>MailTest</servlet-name>
+    <url-pattern>/MailTest.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AndroidStuRegister</servlet-name>
+    <servlet-class>com.fas.servlet.AndroidStuRegisterServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>AndroidStuRegister</servlet-name>
     <url-pattern>/AndroidStuRegister.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>AndroidLogin</servlet-name>
+    <servlet-class>com.fas.servlet.AndroidLoginServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>AndroidLogin</servlet-name>
     <url-pattern>/AndroidLogin.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>AndroidIfRegisterFace</servlet-name>
+    <servlet-class>com.fas.servlet.AndroidIfRegisteredFaceServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
-    <servlet-name>MailTest</servlet-name>
-    <url-pattern>/MailTest.do</url-pattern>
+    <servlet-name>AndroidIfRegisterFace</servlet-name>
+    <url-pattern>/AndroidIfRegisterFace.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AndroidRegisterFace</servlet-name>
+    <servlet-class>com.fas.servlet.AndroidStuRegisterFaceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AndroidRegisterFace</servlet-name>
+    <url-pattern>/AndroidRegisterFace.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AndroidAttendanceServlet</servlet-name>
+    <servlet-class>com.fas.servlet.AndroidAttendanceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AndroidAttendanceServlet</servlet-name>
+    <url-pattern>/AndroidAttendance.do</url-pattern>
   </servlet-mapping>
 </web-app>

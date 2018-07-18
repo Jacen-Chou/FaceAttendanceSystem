@@ -35,7 +35,7 @@ public class MailUtil {
 		StudentDao stuDao = new StudentDao();
 		String info;
 		if (stu != null) {
-			// 重新设置密码
+			// 重新设置密码，使用GetStringRandom方法
 			String password = GetStringRandom.getStringRandom(6);
 			stu.setStuPassword(password);
 			stuDao.updateStu(stu);

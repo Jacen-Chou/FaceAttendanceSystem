@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fas.dao.StudentDao;
-import com.fas.services.StudentService;
+import com.fas.service.StudentService;
 import com.fas.vo.Student;
 
 

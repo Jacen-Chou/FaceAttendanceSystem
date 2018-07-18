@@ -14,15 +14,16 @@ import com.fas.service.StudentService;
 import com.fas.vo.Student;
 
 /**
- * Servlet implementation class AndroidRegisterServlet
+ * Servlet implementation class AndroidStuFaceRegisterServlet
  */
-public class AndroidStuRegisterServlet extends HttpServlet {
+@WebServlet("/AndroidStuFaceRegisterServlet")
+public class AndroidStuRegisterFaceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AndroidStuRegisterServlet() {
+    public AndroidStuRegisterFaceServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,25 +42,23 @@ public class AndroidStuRegisterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-        //设置客户端的解码方式为utf-8
+		//设置客户端的解码方式为utf-8
         response.setContentType("text/html;charset=utf-8");
         request.setCharacterEncoding("UTF-8");
 
         //根据标示名获取JSP文件中表单所包含的参数
         String id = request.getParameter("id");
-        String name = request.getParameter("name");
-        String password = request.getParameter("password");
-        String email = request.getParameter("email");
+        //String registereFace = request.getParameter("data");
         String result;
         
         StudentService studentService = new StudentService();
-        result = studentService.AndroidRegisterService(id, name, password, email);
+        result = studentService.AndroidFaceRegisterService(id);
         
         PrintWriter out = response.getWriter();//回应请求
         out.write(result);
         out.flush();
         out.close();
-        System.out.println(result);
+        System.out.println(result);		
 	}
 
 }
