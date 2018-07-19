@@ -6,6 +6,8 @@ import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
 
 import com.fas.dao.AttendanceDao;
 import com.fas.dao.StudentDao;
+import com.fas.util.GetStringRandom;
+import com.fas.util.MailUtil;
 import com.fas.util.PasswordEncryptUtil;
 import com.fas.vo.Attendance;
 import com.fas.vo.Student;
@@ -31,10 +33,14 @@ public class StudentService {
 		s = stuDao.queryStuById(id);
 		if (s.getStuId() == null) {
 			// 当前用户id不存在，即可注册
+			String salt = GetStringRandom.getStringRandom(5);
+			String passwordEncrypt = PasswordEncryptUtil.SHA512((PasswordEncryptUtil.SHA512(password) + salt));
+			
 			s.setStuId(id);
 			s.setStuName(name);
-			s.setStuPassword(password);
+			s.setStuPassword(passwordEncrypt);
 			s.setStuEmail(email);
+			s.setStuSalt(salt);
 			stuDao.insertStu(s);
 			return "success";
 		} else {
@@ -58,10 +64,6 @@ public class StudentService {
 		s = stuDao.queryStuById(id);
 
 		String salt = s.getStuSalt();
-		System.out.println(salt);
-		System.out.println((PasswordEncryptUtil.SHA512(password)));
-		System.out.println((PasswordEncryptUtil.SHA512(password) + salt));
-		System.out.println(PasswordEncryptUtil.SHA512((PasswordEncryptUtil.SHA512(password) + salt)));
 		String passwordEncrypt = PasswordEncryptUtil.SHA512((PasswordEncryptUtil.SHA512(password) + salt));
 		String passwordDatabase = s.getStuPassword();
 		if (id.equals(s.getStuId()) && passwordEncrypt.equals(passwordDatabase)) {
@@ -71,6 +73,38 @@ public class StudentService {
 		}
 
 	}
+	
+	/**
+	 * @Title: AndroidForgetPasswordService 
+	 * @Description: 忘记密码，设置初始密码
+	 * @param id
+	 * @return
+	 * @throws Exception      
+	 * @exception null
+	 */
+	public String AndroidForgetPasswordService(String id) throws Exception {
+		Student s = new Student();
+		StudentDao stuDao = new StudentDao();
+		s = stuDao.queryStuById(id);
+		
+		if(s.getStuId() != null){
+			
+			// 重新设置密码，使用GetStringRandom方法
+			String password = GetStringRandom.getStringRandom(6);
+			String salt = s.getStuSalt();
+			String passwordEncrypt = PasswordEncryptUtil.SHA512((PasswordEncryptUtil.SHA512(password) + salt));
+			s.setStuPassword(passwordEncrypt);
+			stuDao.updateStu(s);
+			
+			MailUtil mailUtil = new MailUtil();
+			mailUtil.mailSend(s, password);
+			return "success";
+		} else {
+			return "fail";
+		}
+		
+	}
+	
 	
 	/**
  	 * @Title: AndroidIfRegisteredFaceService 
@@ -151,7 +185,13 @@ public class StudentService {
 		}
 	}
 	
-	
+	/**
+	 * @Title: AndroidQueryAllAttByIdService 
+	 * @Description: 查询考勤记录
+	 * @param id
+	 * @return      
+	 * @exception null
+	 */
 	public String AndroidQueryAllAttByIdService(String id) {
 		
 		AttendanceDao attendanceDao = new AttendanceDao();

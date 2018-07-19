@@ -50,7 +50,7 @@ public class AttendanceDao {
 		param.add(id);
 		rs = util.query(sql, param);
 		try {
-			if (rs.next()) {
+			while (rs.next()) {
 				Attendance attendance = new Attendance();
 				attendance.setId(rs.getString("id"));
 				attendance.setName(rs.getString("name"));

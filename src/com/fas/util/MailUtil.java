@@ -28,17 +28,12 @@ public class MailUtil {
 		s.setStuEmail("774845313@qq.com");
 		stuDao.insertStu(s);
 		
-		mailSend(s);
+		mailSend(s, "password");
 	}
 
-	public void mailSend(Student stu) throws Exception {
-		StudentDao stuDao = new StudentDao();
+	public void mailSend(Student stu, String password) throws Exception {
 		String info;
 		if (stu != null) {
-			// 重新设置密码，使用GetStringRandom方法
-			String password = GetStringRandom.getStringRandom(6);
-			stu.setStuPassword(password);
-			stuDao.updateStu(stu);
 
 			// 设置邮件
 			Properties props = new Properties();
@@ -55,11 +50,10 @@ public class MailUtil {
 			msg.setSubject("找回密码通知");// 设置邮件主题
 			String host = props.getProperty("mail.host");
 			String email = props.getProperty("mail.username") + "@" + host.substring(host.indexOf(".") + 1);
-			msg.setFrom(new InternetAddress(MimeUtility.encodeText("系统中心") + " <" + email + ">"));// 设置邮件来源
+			msg.setFrom(new InternetAddress(MimeUtility.encodeText("人脸考勤系统") + " <" + email + ">"));// 设置邮件来源
 			String msgContent = "亲爱的" + stu.getStuName() + "，您好，<br/><br/>" + "您在"
 					+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + "提交了找回密码的请求。<br/><br/>"
-					+ "以下是您的帐户及临时密码信息：<br/><br/>" + "用户名：" + stu.getStuName() + "，临时密码：" + password + "<br/><br/>"
-					+ "该密码是临时密码，请您尽快修改密码，感谢使用本系统。" + "<br/><br/>" + "此为自动发送邮件，请勿直接回复！";
+					+ "您的临时密码为：<br/><br/>" + password + "<br/><br/>"	+ "该密码是临时密码，请您尽快修改密码，感谢使用本系统。" + "<br/><br/>" + "此为自动发送邮件，请勿直接回复！";
 			msg.setContent(msgContent, "text/html;charset=utf-8");// 设置邮件内容，为html格式
 			// 发送邮件
 			Transport transport = session.getTransport();// 创建邮件发送对象

@@ -57,4 +57,20 @@
     <servlet-name>AndroidAttendanceServlet</servlet-name>
     <url-pattern>/AndroidAttendance.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>AndroidQueryAllAttById</servlet-name>
+    <servlet-class>com.fas.servlet.AndroidQueryAllAttByIdServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AndroidQueryAllAttById</servlet-name>
+    <url-pattern>/AndroidQueryAllAttById.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AndroidStuForget</servlet-name>
+    <servlet-class>com.fas.servlet.AndroidStuForgetPasswordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AndroidStuForget</servlet-name>
+    <url-pattern>/AndroidStuForget.do</url-pattern>
+  </servlet-mapping>
 </web-app>

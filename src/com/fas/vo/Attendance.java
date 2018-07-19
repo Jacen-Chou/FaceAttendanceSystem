@@ -33,6 +33,15 @@ public class Attendance {
 	public void setTime(Time time) {
 		this.time = time;
 	}
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		String a = id+"  "+name+"  "+date+"  "+time;
+		return a;
+		
+	}
+	
+	
 	
 
 }

@@ -10,6 +10,7 @@ import com.fas.util.DBUtil;
 import com.fas.util.GetStringRandom;
 import com.fas.util.PasswordEncryptUtil;
 import com.fas.vo.Student;
+import com.sun.accessibility.internal.resources.accessibility;
 import com.sun.org.apache.regexp.internal.recompile;
 
 public class StudentDao {
@@ -76,14 +77,11 @@ public class StudentDao {
 		util.getConnection();
 		sql = "insert into student(stuid, stuname, stupassword, stuemail, stusalt) values(?,?,?,?,?)";
 		List<Object> param = new ArrayList<Object>();
-		String salt = GetStringRandom.getStringRandom(5);
-		String password = s.getStuPassword();
-		String passwordEncrypt = PasswordEncryptUtil.SHA512((PasswordEncryptUtil.SHA512(password) + salt));
 		param.add(s.getStuId());
 		param.add(s.getStuName());
-		param.add(passwordEncrypt);
+		param.add(s.getStuPassword());
 		param.add(s.getStuEmail());
-		param.add(salt);
+		param.add(s.getStuSalt());
 		util.update(sql, param);
 		util.close();
 	}

@@ -15,13 +15,13 @@ import com.fas.vo.Student;
  * Servlet implementation class MailTest2
  */
 @WebServlet("/MailTest2")
-public class MailTest extends HttpServlet {
+public class MailSendTest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MailTest() {
+    public MailSendTest() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -51,7 +51,7 @@ public class MailTest extends HttpServlet {
 		
 		MailUtil mailUtil = new MailUtil();
 		try {
-			mailUtil.mailSend(s);
+			mailUtil.mailSend(s, "pass");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
