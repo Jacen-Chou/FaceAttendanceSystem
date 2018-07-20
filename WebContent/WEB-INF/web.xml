@@ -34,6 +34,14 @@
     <url-pattern>/AndroidLogin.do</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>AndroidStuForget</servlet-name>
+    <servlet-class>com.fas.servlet.AndroidStuForgetPasswordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AndroidStuForget</servlet-name>
+    <url-pattern>/AndroidStuForget.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>AndroidIfRegisterFace</servlet-name>
     <servlet-class>com.fas.servlet.AndroidIfRegisteredFaceServlet</servlet-class>
   </servlet>
@@ -66,11 +74,19 @@
     <url-pattern>/AndroidQueryAllAttById.do</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>AndroidStuForget</servlet-name>
-    <servlet-class>com.fas.servlet.AndroidStuForgetPasswordServlet</servlet-class>
+    <servlet-name>AndroidStuAskForLeave</servlet-name>
+    <servlet-class>com.fas.servlet.AndroidStuAskForLeaveServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>AndroidStuForget</servlet-name>
-    <url-pattern>/AndroidStuForget.do</url-pattern>
+    <servlet-name>AndroidStuAskForLeave</servlet-name>
+    <url-pattern>/AndroidStuAskForLeave.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AndroidQueryPersonalInfo</servlet-name>
+    <servlet-class>com.fas.servlet.AndroidQueryPersonalInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AndroidQueryPersonalInfo</servlet-name>
+    <url-pattern>/AndroidQueryPersonalInfo.do</url-pattern>
   </servlet-mapping>
 </web-app>

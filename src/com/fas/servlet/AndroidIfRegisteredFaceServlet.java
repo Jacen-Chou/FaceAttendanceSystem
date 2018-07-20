@@ -50,11 +50,12 @@ public class AndroidIfRegisteredFaceServlet extends HttpServlet {
 
 		// 根据标示名获取表单所包含的参数
 		String id = request.getParameter("id");
+		String flag = request.getParameter("flag");
 		PrintWriter out = response.getWriter();// 回应请求
 		String result;
 
 		StudentService studentService = new StudentService();
-		result = studentService.AndroidIfRegisteredFaceService(id);
+		result = studentService.AndroidIfRegisteredFaceService(id, flag);
 
 		out.write(result);
 		out.flush();

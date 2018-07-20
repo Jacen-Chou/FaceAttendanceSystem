@@ -36,6 +36,8 @@ public class Attendance {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
+		//重写toString方法，否则输出的是com.fas.vo.Attendance@******
+		//即每个Java类自带的toString()方法的具体内容：getClass().getName() + '@' + Integer.toHexString(hashCode())
 		String a = id+"  "+name+"  "+date+"  "+time;
 		return a;
 		
