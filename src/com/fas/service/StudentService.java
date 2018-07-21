@@ -2,6 +2,7 @@ package com.fas.service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -164,28 +165,32 @@ public class StudentService {
 	 * @return
 	 * @exception null
 	 */
-	public String AndroidAttendanceService(String id, String judge) {
+	public String AndroidAttendanceService(String id, String judge, String ip) {
 
-		if (judge.equals("true")) {
+		String regex = "10\\.24\\.[0-9]{1,3}\\.[0-9]{1,3}";
+		if(!Pattern.matches(regex, ip)) { //IP不匹配
+			return "ip_error";
+		}else { //IP匹配
+			if (judge.equals("true")) {  //置信度满足
+				// 确定打卡的学生
+				StudentDao stuDao = new StudentDao();
+				Student s = new Student();
+				s = stuDao.queryStuById(id);
 
-			// 确定打卡的学生
-			StudentDao stuDao = new StudentDao();
-			Student s = new Student();
-			s = stuDao.queryStuById(id);
+				// 记录考勤相关信息
+				AttendanceDao attendaceDao = new AttendanceDao();
+				Attendance attendance = new Attendance();
+				attendance.setId(id);
+				attendance.setName(s.getStuName());
+				attendance.setDate(new java.sql.Date(new java.util.Date().getTime()));
+				attendance.setTime(new java.sql.Time(System.currentTimeMillis()));
 
-			// 记录考勤相关信息
-			AttendanceDao attendaceDao = new AttendanceDao();
-			Attendance attendance = new Attendance();
-			attendance.setId(id);
-			attendance.setName(s.getStuName());
-			attendance.setDate(new java.sql.Date(new java.util.Date().getTime()));
-			attendance.setTime(new java.sql.Time(System.currentTimeMillis()));
-
-			// 插入数据库
-			attendaceDao.insertAttendance(attendance);
-			return "success";
-		} else {
-			return "fail";
+				// 插入数据库
+				attendaceDao.insertAttendance(attendance);
+				return "success";
+			} else {  //置信度不满足
+				return "fail";
+			}
 		}
 	}
 

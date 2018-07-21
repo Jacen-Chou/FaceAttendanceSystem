@@ -55,17 +55,19 @@ public class AndroidAttendanceServlet extends HttpServlet {
 		// 根据标示名获取表单所包含的参数
 		String id = request.getParameter("id");
 		String judge = request.getParameter("if_success");
+		String ip = request.getParameter("IP");
 		System.out.println(judge);
+		System.out.println(ip);
 		String result;
 
 		StudentService studentService = new StudentService();
-		result = studentService.AndroidAttendanceService(id, judge);
+		result = studentService.AndroidAttendanceService(id, judge, ip);
 
 		PrintWriter out = response.getWriter();// 回应请求
 		out.write(result);
 		out.flush();
 		out.close();
-		System.out.println(result);
+		System.out.println("打卡"+result);
 	}
 
 }
