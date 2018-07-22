@@ -89,4 +89,12 @@
     <servlet-name>AndroidQueryPersonalInfo</servlet-name>
     <url-pattern>/AndroidQueryPersonalInfo.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>AndroidStuModifyPassword</servlet-name>
+    <servlet-class>com.fas.servlet.AndroidStuModifyPasswordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AndroidStuModifyPassword</servlet-name>
+    <url-pattern>/AndroidStuModifyPassword.do</url-pattern>
+  </servlet-mapping>
 </web-app>

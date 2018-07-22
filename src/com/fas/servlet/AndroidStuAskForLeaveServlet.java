@@ -42,15 +42,17 @@ public class AndroidStuAskForLeaveServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+				
         //设置客户端的解码方式为utf-8
         response.setContentType("text/html;charset=utf-8");
         request.setCharacterEncoding("UTF-8");
 
         //根据标示名获取表单所包含的参数
         String stuid = request.getParameter("stuid");
-        String teaid = request.getParameter("teaid");
-        String date_string = request.getParameter("date");
+        System.out.println(stuid);
+        //String teaid = request.getParameter("teaid");
+        String teaid = "1";
+        String date_string = request.getParameter("start");
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
 		try {
@@ -60,7 +62,7 @@ public class AndroidStuAskForLeaveServlet extends HttpServlet {
 			e.printStackTrace();
 		}
         
-        int numberOfDays = Integer.parseInt(request.getParameter("numberofdays"));
+        int numberOfDays = Integer.parseInt(request.getParameter("days"));
         String reason = request.getParameter("reason");
         String result = "";
         
@@ -71,7 +73,7 @@ public class AndroidStuAskForLeaveServlet extends HttpServlet {
         out.write(result);
         out.flush();
         out.close();
-        System.out.println(result);
+        System.out.println("获取请假" + result);
 		
 	}
 

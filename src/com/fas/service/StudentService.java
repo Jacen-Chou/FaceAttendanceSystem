@@ -168,10 +168,10 @@ public class StudentService {
 	public String AndroidAttendanceService(String id, String judge, String ip) {
 
 		String regex = "10\\.24\\.[0-9]{1,3}\\.[0-9]{1,3}";
-		if(!Pattern.matches(regex, ip)) { //IP不匹配
+		if (!Pattern.matches(regex, ip)) { // IP不匹配
 			return "ip_error";
-		}else { //IP匹配
-			if (judge.equals("true")) {  //置信度满足
+		} else { // IP匹配
+			if (judge.equals("true")) { // 置信度满足
 				// 确定打卡的学生
 				StudentDao stuDao = new StudentDao();
 				Student s = new Student();
@@ -188,7 +188,7 @@ public class StudentService {
 				// 插入数据库
 				attendaceDao.insertAttendance(attendance);
 				return "success";
-			} else {  //置信度不满足
+			} else { // 置信度不满足
 				return "fail";
 			}
 		}
@@ -212,33 +212,50 @@ public class StudentService {
 		}
 		return result;
 	}
-	
+
 	/**
-	 * @Title: AndroidAskForLeaveService 
+	 * @Title: AndroidAskForLeaveService
 	 * @Description: 请假功能
 	 * @param stuid
 	 * @param teaid
 	 * @param date
 	 * @param numberOfDays
 	 * @param reason
-	 * @return      
+	 * @return
 	 * @exception null
 	 */
 	public String AndroidAskForLeaveService(String stuid, String teaid, Date date, int numberOfDays, String reason) {
 		AskForLeaveDao askForLeaveDao = new AskForLeaveDao();
 		AskForLeave askForLeave = new AskForLeave();
-		
-		//记录请假相关信息
-		askForLeave.setStuid(stuid);
-		askForLeave.setTeaid(teaid);
-		askForLeave.setDate(date);
-		askForLeave.setNumberOfDays(numberOfDays);
-		askForLeave.setReason(reason);
-		//插入数据库
-		askForLeaveDao.insertAskForLeave(askForLeave);
-		return "success";
+
+		StudentDao stuDao = new StudentDao();
+		Student s = new Student();
+		s = stuDao.queryStuById(stuid);
+
+		if (s.getStuId() != null) {
+
+			// 记录请假相关信息
+			askForLeave.setStuid(stuid);
+			askForLeave.setTeaid(teaid);
+			askForLeave.setDate(date);
+			askForLeave.setNumberOfDays(numberOfDays);
+			askForLeave.setReason(reason);
+			// 插入数据库
+			askForLeaveDao.insertAskForLeave(askForLeave);
+			return "success";
+		} else {
+			return "fail";
+		}
+
 	}
-	
+
+	/**
+	 * @Title: AnroidQueryPersonalInfoService 
+	 * @Description: 查询个人信息
+	 * @param id
+	 * @return      
+	 * @exception null
+	 */
 	public String AnroidQueryPersonalInfoService(String id) {
 		
 		StudentDao studentDao = new StudentDao();
@@ -256,4 +273,34 @@ public class StudentService {
 		return result;
 	}
 	
+	/**
+	 * @Title: AndroidStuModifyPasswordService 
+	 * @Description: 修改密码
+	 * @param id
+	 * @param old_pass
+	 * @param new_pass
+	 * @return      
+	 * @exception null
+	 */
+	public String AndroidStuModifyPasswordService(String id, String old_pass, String new_pass) {
+
+		StudentDao studentDao = new StudentDao();
+		Student s = new Student();
+		s = studentDao.queryStuById(id);
+
+		if (s.getStuId() != null) {
+			String salt = s.getStuSalt();
+			String oldPassEncrypt = PasswordEncryptUtil.SHA512((PasswordEncryptUtil.SHA512(old_pass) + salt));
+			if (oldPassEncrypt.equals(s.getStuPassword())) {
+				String newPassEncrypt = PasswordEncryptUtil.SHA512((PasswordEncryptUtil.SHA512(new_pass) + salt));
+				s.setStuPassword(newPassEncrypt);
+				return "success";
+			} else {
+				return "pass_error";
+			}
+		} else {
+			return "fail";
+		}
+	}
+
 }
