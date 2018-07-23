@@ -5,8 +5,9 @@ public class Teacher {
 	private String teaid;
 	private String teaname;
 	private String teapassword;
+	private String teasalt;
 	private String teaemail;
-	private int teaphone;
+	private String teaphone;
 	
 	public String getTeaid() {
 		return teaid;
@@ -26,16 +27,22 @@ public class Teacher {
 	public void setTeapassword(String teapassword) {
 		this.teapassword = teapassword;
 	}
+	public String getTeasalt() {
+		return teasalt;
+	}
+	public void setTeasalt(String teasalt) {
+		this.teasalt = teasalt;
+	}
 	public String getTeaemail() {
 		return teaemail;
 	}
 	public void setTeaemail(String teaemail) {
 		this.teaemail = teaemail;
 	}
-	public int getTeaphone() {
+	public String getTeaphone() {
 		return teaphone;
 	}
-	public void setTeaphone(int teaphone) {
+	public void setTeaphone(String teaphone) {
 		this.teaphone = teaphone;
 	}
 	

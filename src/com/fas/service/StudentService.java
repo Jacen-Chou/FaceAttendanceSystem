@@ -167,7 +167,7 @@ public class StudentService {
 	 */
 	public String AndroidAttendanceService(String id, String judge, String ip) {
 
-		String regex = "10\\.24\\.[0-9]{1,3}\\.[0-9]{1,3}";
+		String regex = "192\\.168\\.[0-9]{1,3}\\.[0-9]{1,3}";
 		if (!Pattern.matches(regex, ip)) { // IP≤ª∆•≈‰
 			return "ip_error";
 		} else { // IP∆•≈‰

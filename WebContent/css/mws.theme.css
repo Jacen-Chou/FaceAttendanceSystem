@@ -1,6 +1,6 @@
 div#mws-header
 {
-	border-color:#c5d52b;
+	border-color:#d6d6d6;
 }
 
 .mws-panel .mws-panel-header span, 
@@ -19,8 +19,8 @@ div#mws-user-tools #mws-user-info #mws-user-functions #mws-username,
 .ui-state-hover a, 
 .ui-state-focus a
 {
-	color:#c5d52b;
-	text-shadow:0 0 6px rgba(197, 213, 42, 0.5);
+	color:#fafafa;
+	text-shadow:0 0 6px rgba(237, 237, 237, 0.38);
 }
 
 div#mws-searchbox input.mws-search-submit, 
@@ -37,5 +37,5 @@ div.dataTables_wrapper .dataTables_paginate span.paginate_active,
 .ui-accordion-header .ui-icon, 
 .ui-dialog-titlebar-close .ui-icon
 {
-	background-color:#c5d52b;
+	background-color:#d6d6d6;
 }

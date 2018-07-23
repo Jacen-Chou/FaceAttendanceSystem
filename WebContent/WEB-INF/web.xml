@@ -105,4 +105,13 @@
     <servlet-name>TeaLoginServlet</servlet-name>
     <url-pattern>/TeaLoginServlet.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>TeaRegisterServlet</servlet-name>
+    <servlet-class>com.fas.servlet.TeaRegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TeaRegisterServlet</servlet-name>
+    <url-pattern>/TeaRegisterServlet.do</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
