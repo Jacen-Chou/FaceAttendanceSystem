@@ -1,12 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+<meta http-equiv="Pragma" content="no-cache"> 
+<meta http-equiv="Cache-Control" content="no-cache"> 
+<meta http-equiv="Expires" content="0"> 
+<title>USTB-Dang Dang人脸识别考勤系统（教师端）</title>
+<link href="css/login.css" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
-	<h1>这里是人脸考勤识别系统</h1>
+<div class="login_box">
+      <div class="login_l_img"><img src="images/login-img.png" /></div>
+      <div class="login">
+          <div class="login_logo"><a href="#"><img src="images/login_logo.png" /></a></div>
+          <div class="login_name">
+               <p>USTB-Dang Dang人脸识别考勤系统<br>（教师端）</p>
+          </div>
+          <form method="post">
+              <input name="username" type="text"  value="用户名" onfocus="this.value=''" onblur="if(this.value==''){this.value='用户名'}">
+              <span id="password_text" onclick="this.style.display='none';document.getElementById('password').style.display='block';document.getElementById('password').focus().select();" >密码</span>
+<input name="password" type="password" id="password" style="display:none;" onblur="if(this.value==''){document.getElementById('password_text').style.display='block';this.style.display='none'};"/>
+          </form>
+          <div>
+			<a href="TeaLoginServlet"><input value="登录" style="width:40%;float:left;margin-right:5px" type="submit"></a>
+			<input value="注册" style="width:40%;float:right;margin-left:5px" type="submit">
+		  </div>                        
+      </div>
+      <footer class="copyright">USTB生产实习——人脸识别考勤项目小组 版权所有©2018</footer>
+</div>
+
 </body>
 </html>

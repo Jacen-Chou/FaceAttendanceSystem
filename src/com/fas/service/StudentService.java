@@ -294,6 +294,7 @@ public class StudentService {
 			if (oldPassEncrypt.equals(s.getStuPassword())) {
 				String newPassEncrypt = PasswordEncryptUtil.SHA512((PasswordEncryptUtil.SHA512(new_pass) + salt));
 				s.setStuPassword(newPassEncrypt);
+				studentDao.updateStu(s);
 				return "success";
 			} else {
 				return "pass_error";

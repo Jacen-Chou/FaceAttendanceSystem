@@ -97,4 +97,12 @@
     <servlet-name>AndroidStuModifyPassword</servlet-name>
     <url-pattern>/AndroidStuModifyPassword.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>TeaLoginServlet</servlet-name>
+    <servlet-class>com.fas.servlet.TeaLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TeaLoginServlet</servlet-name>
+    <url-pattern>/TeaLoginServlet.do</url-pattern>
+  </servlet-mapping>
 </web-app>

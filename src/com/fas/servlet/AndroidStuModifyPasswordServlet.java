@@ -51,6 +51,7 @@ public class AndroidStuModifyPasswordServlet extends HttpServlet {
 		// 根据标示名获取表单所包含的参数
 		String id = request.getParameter("id");
 		String old_pass = request.getParameter("old_pass");
+		System.out.println(old_pass);
 		String new_pass = request.getParameter("new_pass");
 		String result = "";
 
