@@ -96,7 +96,7 @@ public class TeacherDao {
 	//¸üĞÂ
 	public void updateTeacher(Teacher t) {
 		util.getConnection();
- 		String sql = "update teacher set teaname=?, teapassword=?, teasalt=?, taemail=?, teaphone=? where teaid=?";
+ 		String sql = "update teacher set teaname=?, teapassword=?, teasalt=?, teaemail=?, teaphone=? where teaid=?";
  		List<Object> param = new ArrayList<Object>();
 		param.add(t.getTeaname());
 		param.add(t.getTeapassword());

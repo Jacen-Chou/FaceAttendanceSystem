@@ -84,7 +84,7 @@
 <script type="text/javascript" src="js/demo.js"></script>
 <script type="text/javascript" src="js/themer.js"></script>
 
-<title>MWS Admin - Table</title>
+<title>USTB-Dang Dang人脸识别考勤系统</title>
 
 </head>
 
@@ -108,8 +108,8 @@
 					<div id="mws-username">Hello, ${ sessionScope.teaname }(${ sessionScope.teaid })
 					</div>
 					<ul>
-						<li><a href="#">个人信息</a></li>
-						<li><a href="#">修改密码</a></li>
+						<li><a href="TeaPersonInfoServlet.do?teaid=${ sessionScope.teaid }">个人信息</a></li>
+						<li><a href="form_layouts2.jsp">修改密码</a></li>
 						<li><a href="index.jsp">注销登陆</a></li>
 					</ul>
 				</div>
@@ -124,30 +124,12 @@
 		<div id="mws-sidebar">
 			<div id="mws-navigation">
 				<ul>
-					<li class="active"><a href="dashboard.jsp"
-						class="mws-i-24 i-home">主页</a></li>
-					<li><a href="TeaClickCreateAttGroupServlet.do"
-						class="mws-i-24 i-chart">创建考勤组</a></li>
+					<li class="active"><a href="dashboard.jsp"	class="mws-i-24 i-home">主页</a></li>
+					<li><a href="TeaClickCreateAttGroupServlet.do" class="mws-i-24 i-multiple-users">创建考勤组</a></li>
 					<li><a href="TeaQueryAttGroup.do?teaid=${sessionScope.teaid }" class="mws-i-24 i-file-cabinet">我的考勤组</a></li>
 					<li><a href="TeaQueryAtt.do" class="mws-i-24 i-day-calendar">查看考勤记录</a></li>
-					<li><a href="files.html" class="mws-i-24 i-file-cabinet">File
-							Manager</a></li>
-					<li><a href="table.html" class="mws-i-24 i-table-1">Table</a></li>
-					<li><a href="#" class="mws-i-24 i-list">Forms</a>
-						<ul>
-							<li><a href="form_layouts.html">Layouts</a></li>
-							<li><a href="form_elements.html">Elements</a></li>
-						</ul></li>
-					<li><a href="widgets.html" class="mws-i-24 i-cog">Widgets</a></li>
-					<li><a href="typography.html" class="mws-i-24 i-text-styling">Typography</a></li>
-					<li><a href="grids.html" class="mws-i-24 i-blocks-images">Grids
-							&amp; Panels</a></li>
-					<li><a href="gallery.html" class="mws-i-24 i-polaroids">Gallery</a></li>
-					<li><a href="error.html" class="mws-i-24 i-alert-2">Error
-							Page</a></li>
-					<li><a href="icons.html" class="mws-i-24 i-pacman"> Icons
-							<span class="mws-nav-tooltip">2000+</span>
-					</a></li>
+					<li><a href="TeaPersonInfoServlet.do?teaid=${ sessionScope.teaid }" class="mws-i-24 i-user">个人信息</a></li>
+					<li><a href="form_layouts2.jsp" class="mws-i-24 i-key-2">修改密码</a></li>
 				</ul>
 			</div>
 		</div>

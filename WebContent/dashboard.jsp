@@ -110,8 +110,8 @@
 						Hello, ${ sessionScope.teaname }(${ sessionScope.teaid })
 					</div>
 					<ul>
-						<li><a href="#">个人信息</a></li>
-						<li><a href="#">修改密码</a></li>
+						<li><a href="TeaPersonInfoServlet.do?teaid=${ sessionScope.teaid }">个人信息</a></li>
+						<li><a href="form_layouts2.jsp">修改密码</a></li>
 						<li><a href="index.jsp">注销登陆</a></li>
 					</ul>
 				</div>
@@ -132,29 +132,12 @@
 			<!-- Main Navigation -->
 			<div id="mws-navigation">
 				<ul>
-					<li class="active"><a href="dashboard.jsp"
-						class="mws-i-24 i-home">主页</a></li>
+					<li class="active"><a href="dashboard.jsp" class="mws-i-24 i-home">主页</a></li>
 					<li><a href="TeaClickCreateAttGroupServlet.do" class="mws-i-24 i-multiple-users">创建考勤组</a></li>
 					<li><a href="TeaQueryAttGroup.do?teaid=${sessionScope.teaid }" class="mws-i-24 i-file-cabinet">我的考勤组</a></li>
 					<li><a href="TeaQueryAtt.do" class="mws-i-24 i-day-calendar">查看考勤记录</a></li>
-					<li><a href="files.html" class="mws-i-24 i-file-cabinet">File
-							Manager</a></li>
-					<li><a href="table.html" class="mws-i-24 i-table-1">Table</a></li>
-					<li><a href="#" class="mws-i-24 i-list">Forms</a>
-						<ul>
-							<li><a href="form_layouts.html">Layouts</a></li>
-							<li><a href="form_elements.html">Elements</a></li>
-						</ul></li>
-					<li><a href="widgets.html" class="mws-i-24 i-cog">Widgets</a></li>
-					<li><a href="typography.html" class="mws-i-24 i-text-styling">Typography</a></li>
-					<li><a href="grids.html" class="mws-i-24 i-blocks-images">Grids
-							&amp; Panels</a></li>
-					<li><a href="gallery.html" class="mws-i-24 i-polaroids">Gallery</a></li>
-					<li><a href="error.html" class="mws-i-24 i-alert-2">Error
-							Page</a></li>
-					<li><a href="icons.html" class="mws-i-24 i-pacman"> Icons
-							<span class="mws-nav-tooltip">2000+</span>
-					</a></li>
+					<li><a href="TeaPersonInfoServlet.do?teaid=${ sessionScope.teaid }" class="mws-i-24 i-user">个人信息</a></li>
+					<li><a href="form_layouts2.jsp" class="mws-i-24 i-key-2">修改密码</a></li>
 				</ul>
 			</div>
 			<!-- End Navigation -->
@@ -168,26 +151,16 @@
 			<!-- Main Container -->
 			<div class="container">
 			
-				<div class="mws-report-container clearfix">
+				<div class="mws-report-container clearfix" style="margin-left: 30%">
 					<a class="mws-report" href="#"> <span
 						class="mws-report-icon mws-ic ic-status-online"></span> <span
 						class="mws-report-content"> <span class="mws-report-title">注册学生数</span>
-							<br><span class="mws-report-value">324</span>
+							<br><span class="mws-report-value">${ sessionScope.stunum }</span>
 					</span>
 					</a> <a class="mws-report" href="#"> <span
-						class="mws-report-icon mws-ic ic-sport"></span> <span
+						class="mws-report-icon mws-ic ic-accept"></span> <span
 						class="mws-report-content"> <span class="mws-report-title">总考勤次数
-							</span> <span class="mws-report-value up">100</span>
-					</span>
-					</a> <a class="mws-report" href="#"> <span
-						class="mws-report-icon mws-ic ic-walk"></span> <span
-						class="mws-report-content"> <span class="mws-report-title">现有考勤组</span>
-							<br><span class="mws-report-value">14</span>
-					</span>
-					</a> <a class="mws-report" href="#"> <span
-						class="mws-report-icon mws-ic ic-bug"></span> <span
-						class="mws-report-content"> <span class="mws-report-title">您的考勤组</span>
-							<br><span class="mws-report-value">10</span>
+							</span> <span class="mws-report-value up">${ sessionScope.attnum }</span>
 					</span>
 					</a>
 				</div>

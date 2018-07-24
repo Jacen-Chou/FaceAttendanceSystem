@@ -63,6 +63,26 @@
 
 <title>USTB-Dang Dang人脸识别考勤系统</title>
 
+<script type="text/javascript">
+
+	function modify_pass() {
+		var old_pass = document.getElementById("old_pass").value;
+		var new_pass = document.getElementById("new_pass").value;
+		var confirm_new_pass = document.getElementById("confirm_new_pass").value;
+		
+		if (old_pass == "" || new_pass == "" || confirm_new_pass == "") {
+			alert("请输入所有内容！");
+			return false;
+		} else if (new_pass != confirm_new_pass){
+			alert("新密码两次输入不一样！");
+			return false;
+		} {
+			document.getElementById("modify_password_form").submit();
+		}
+	}
+
+</script>
+
 </head>
 
 <body>
@@ -124,36 +144,33 @@
             <div class="container">
             	<div class="mws-panel grid_8">
                 	<div class="mws-panel-header">
-                    	<span class="mws-i-24 i-list">创建考勤组</span>
+                    	<span class="mws-i-24 i-key-2">修改密码</span>
                     </div>
                     <div class="mws-panel-body">
-                    	<form class="mws-form" action="TeaCreateAttGroupServlet.do" id="create_att_form" name="create_att_form">
+                    	<form class="mws-form" action="TeaModifyPassServlet.do" id="modify_password_form" name="modify_password_form">
 							<input type="hidden" name="teaid" value="${ sessionScope.teaid }"/>
                     		<div class="mws-form-inline">
                     			<div class="mws-form-row">
-                    				<label>考勤组名</label>
+                    				<label>原密码</label>
                     				<div class="mws-form-item small">
-                    					<input id="group_name" name="group_name" type="text" class="mws-textinput" />
+                    					<input id="old_pass" name="old_pass" type="password" class="mws-textinput" />
                     				</div>
                     			</div>
                     			<div class="mws-form-row">
-                    				<label>选择此考勤组的学生</label>
-                    				<div class="mws-form-item clearfix">
-                    				
-                    					<c:forEach items="${list}" var="student" varStatus="status">
-                    						<c:if test="${status.count%5==1}">
-                    					    	<ul class="mws-form-list inline">
-                    					    </c:if>
-	                    						<li><input type="checkbox" id="${ student.stuId }" name="chkItem"/ value="${ student.stuId }"> ${ student.stuName }(${ student.stuId })</li>
-											<c:if test="${status.count%5==0}">
-                    							</ul>
-											</c:if>
-								    	</c:forEach>
+                    				<label>新密码</label>
+                    				<div class="mws-form-item small">
+                    					<input id="new_pass" name="new_pass" type="password" class="mws-textinput" />
+                    				</div>
+                    			</div>
+                    			<div class="mws-form-row">
+                    				<label>确认新密码</label>
+                    				<div class="mws-form-item small">
+                    					<input id="confirm_new_pass" name="confirm_new_pass" type="password" class="mws-textinput" />
                     				</div>
                     			</div>
                     		</div>
                     		<div class="mws-button-row">
-                    			<input type="submit" value="&nbsp;提&nbsp;交&nbsp;" class="mws-button green" style="margin-right:15px;"/>
+                    			<input type="button" value="&nbsp;提&nbsp;交&nbsp;" class="mws-button green" style="margin-right:15px;" onclick="modify_pass()" />
                     			<input type="reset" value="&nbsp;清&nbsp;空&nbsp;" class="mws-button gray" />
                     		</div>
                     	</form>

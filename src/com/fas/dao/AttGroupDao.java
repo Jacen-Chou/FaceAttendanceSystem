@@ -22,9 +22,11 @@ public class AttGroupDao {
 	// 根据教师查询全部记录
 	public List<AttGroupWithStudent> queryAttGroupByTea(String teaid) {
 		util.getConnection();
-		sql = "select g.groupid, g.group_name, a.stuid, s.stuname from att_group g join att_group__student a on g.groupid=a.groupid join student s on a.stuid=s.stuid";
+		sql = "select g.groupid, g.group_name, a.stuid, s.stuname from att_group g join att_group__student a on g.groupid=a.groupid join student s on a.stuid=s.stuid where g.teaid=?";
 		List<AttGroupWithStudent> list = new ArrayList<AttGroupWithStudent>();
-		rs = util.query(sql, null);
+		List<Object> param = new ArrayList<Object>();
+		param.add(teaid);
+		rs = util.query(sql, param);
 		try {
 			while (rs.next()) {
 				AttGroupWithStudent attGroupWithStudent = new AttGroupWithStudent();

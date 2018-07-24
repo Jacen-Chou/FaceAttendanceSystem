@@ -148,4 +148,28 @@
     <servlet-name>TeaQueryAttGroup</servlet-name>
     <url-pattern>/TeaQueryAttGroup.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>TeaDashBoardServlet</servlet-name>
+    <servlet-class>com.fas.servlet.TeaDashBoardServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TeaDashBoardServlet</servlet-name>
+    <url-pattern>/TeaDashBoardServlet.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>TeaPersonInfoServlet</servlet-name>
+    <servlet-class>com.fas.servlet.TeaPersonInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TeaPersonInfoServlet</servlet-name>
+    <url-pattern>/TeaPersonInfoServlet.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>TeaModifyPassServlet</servlet-name>
+    <servlet-class>com.fas.servlet.TeaModifyPassServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TeaModifyPassServlet</servlet-name>
+    <url-pattern>/TeaModifyPassServlet.do</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -1,7 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -66,7 +65,8 @@
 </head>
 
 <body>
-<!-- Header Wrapper -->
+
+	<!-- Header Wrapper -->
 	<div id="mws-header" class="clearfix">
 
 		<!-- Logo Wrapper -->
@@ -118,50 +118,64 @@
 			<!-- End Navigation -->
 
 		</div>
-
         
         <div id="mws-container" class="clearfix">
             <div class="container">
-            	<div class="mws-panel grid_8">
+            
+
+                
+                <div class="clear"></div>
+                
+            	<div class="mws-panel grid_2">
                 	<div class="mws-panel-header">
-                    	<span class="mws-i-24 i-list">创建考勤组</span>
+                    	<span>工号</span>
                     </div>
                     <div class="mws-panel-body">
-                    	<form class="mws-form" action="TeaCreateAttGroupServlet.do" id="create_att_form" name="create_att_form">
-							<input type="hidden" name="teaid" value="${ sessionScope.teaid }"/>
-                    		<div class="mws-form-inline">
-                    			<div class="mws-form-row">
-                    				<label>考勤组名</label>
-                    				<div class="mws-form-item small">
-                    					<input id="group_name" name="group_name" type="text" class="mws-textinput" />
-                    				</div>
-                    			</div>
-                    			<div class="mws-form-row">
-                    				<label>选择此考勤组的学生</label>
-                    				<div class="mws-form-item clearfix">
-                    				
-                    					<c:forEach items="${list}" var="student" varStatus="status">
-                    						<c:if test="${status.count%5==1}">
-                    					    	<ul class="mws-form-list inline">
-                    					    </c:if>
-	                    						<li><input type="checkbox" id="${ student.stuId }" name="chkItem"/ value="${ student.stuId }"> ${ student.stuName }(${ student.stuId })</li>
-											<c:if test="${status.count%5==0}">
-                    							</ul>
-											</c:if>
-								    	</c:forEach>
-                    				</div>
-                    			</div>
-                    		</div>
-                    		<div class="mws-button-row">
-                    			<input type="submit" value="&nbsp;提&nbsp;交&nbsp;" class="mws-button green" style="margin-right:15px;"/>
-                    			<input type="reset" value="&nbsp;清&nbsp;空&nbsp;" class="mws-button gray" />
-                    		</div>
-                    	</form>
-                    </div>    	
+                    	<div class="mws-panel-content"><span>${ teacher.teaid }</span>
+                        </div>
+                    </div>
                 </div>
-            <!-- Footer -->
-			<div id="mws-footer">USTB生产实习——人脸识别考勤项目小组 版权所有©2018</div>
+                
+                <div class="clear"></div>
+                <div class="mws-panel grid_2">
+                	<div class="mws-panel-header">
+                    	<span>姓名</span>
+                    </div>
+                    <div class="mws-panel-body">
+                    	<div class="mws-panel-content"><span>${ teacher.teaname }</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="clear"></div>
+                <div class="mws-panel grid_2">
+                	<div class="mws-panel-header">
+                    	<span>邮箱</span>
+                    </div>
+                    <div class="mws-panel-body">
+                    	<div class="mws-panel-content"><span>${ teacher.teaemail }</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="clear"></div>
+                <div class="mws-panel grid_2">
+                	<div class="mws-panel-header">
+                    	<span>手机号</span>
+                    </div>
+                    <div class="mws-panel-body">
+                    	<div class="mws-panel-content"><span>${ teacher.teaphone }</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="clear"></div>
+			<!-- Footer -->
+				<div id="mws-footer">USTB生产实习——人脸识别考勤项目小组 版权所有©2018</div>
 			<!-- End Footer -->
+                
+            </div>
+
         </div>
     </div>
 

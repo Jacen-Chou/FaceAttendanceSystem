@@ -130,5 +130,25 @@ public class AttendanceDao {
 		}
 		return list;
 	}
+	
+	// ¼ÆËã¿¼ÇÚ×ÛÊö
+	public int CountAttNum() {
+		util.getConnection();
+		sql = " select count(*) from attendance";
+		rs = util.query(sql, null);
+		int attnum = 0;
+		try {
+			if(rs.next()) {
+				attnum = rs.getInt(1);
+				System.out.println(attnum);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			util.close();
+		}
+		return attnum;
+	}
 
 }

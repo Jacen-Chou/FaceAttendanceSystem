@@ -111,4 +111,24 @@ public class StudentDao {
 		util.close();
 	}
 	
+	// 计算学生总数
+	public int CountStuNum() {
+		util.getConnection();
+		sql = " select count(*) from student";
+		rs = util.query(sql, null);
+		int stunum = 0;
+		try {
+			if(rs.next()) {
+				stunum = rs.getInt(1);
+				System.out.println(stunum);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			util.close();
+		}
+		return stunum;
+	}
+	
 }
