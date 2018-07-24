@@ -40,7 +40,7 @@
           <div class="login_name">
                <p>USTB-Dang Dang人脸识别考勤系统<br>（教师端）</p>
           </div>
-          <form method="post" action="TeaLoginServlet" id="login_form" name="login_form">
+          <form method="post" action="TeaLoginServlet.do" id="login_form" name="login_form">
 				<c:choose>  
    					<c:when test="${empty teaid}">
    						<input id="teaid" name="teaid" type="text" value="用户名" onfocus="if(this.value=='用户名'){this.value=''}" onblur="if(this.value==''){this.value='用户名'}">

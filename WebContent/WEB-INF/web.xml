@@ -9,6 +9,9 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <session-config>
+    <session-timeout>300</session-timeout>
+  </session-config>
   <servlet>
     <servlet-name>MailTest</servlet-name>
     <servlet-class>com.fas.test.MailTest</servlet-class>
@@ -113,5 +116,36 @@
     <servlet-name>TeaRegisterServlet</servlet-name>
     <url-pattern>/TeaRegisterServlet.do</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <servlet-name>TeaClickCreateAttGroupServlet</servlet-name>
+    <servlet-class>com.fas.servlet.TeaClickCreateAttGroupServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TeaClickCreateAttGroupServlet</servlet-name>
+    <url-pattern>/TeaClickCreateAttGroupServlet.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>TeaCreateAttGroupServlet</servlet-name>
+    <servlet-class>com.fas.servlet.TeaCreateAttGroupServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TeaCreateAttGroupServlet</servlet-name>
+    <url-pattern>/TeaCreateAttGroupServlet.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>TeaQueryAtt</servlet-name>
+    <servlet-class>com.fas.servlet.TeaQueryAtt</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TeaQueryAtt</servlet-name>
+    <url-pattern>/TeaQueryAtt.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>TeaQueryAttGroup</servlet-name>
+    <servlet-class>com.fas.servlet.TeaQueryAttGroup</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TeaQueryAttGroup</servlet-name>
+    <url-pattern>/TeaQueryAttGroup.do</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.fas.util.DBUtil;
 import com.fas.vo.Attendance;
+import com.fas.vo.AttendanceWithGroup;
 import com.fas.vo.Student;
 
 public class AttendanceDao {
@@ -26,6 +27,7 @@ public class AttendanceDao {
 		try {
 			while (rs.next()) {
 				Attendance attendance = new Attendance();
+				attendance.setAtt_id(rs.getInt("att_id"));
 				attendance.setId(rs.getString("id"));
 				attendance.setName(rs.getString("name"));
 				attendance.setDate(rs.getDate("date"));
@@ -101,6 +103,32 @@ public class AttendanceDao {
 		param.add(attendance.getId());
 		util.update(sql, param);
 		util.close();
+	}
+	
+	// 联合查询全部记录
+	public List<AttendanceWithGroup> queryAllAttWithGroup() {
+		util.getConnection();
+		sql = "select a.att_id,a.id,a.name,a.date,a.time,att.group_name from attendance a join att_group__student atts on a.id=atts.stuid join att_group att on atts.groupid=att.groupid";
+		List<AttendanceWithGroup> list = new ArrayList<AttendanceWithGroup>();
+		rs = util.query(sql, null);
+		try {
+			while (rs.next()) {
+				AttendanceWithGroup attendanceWithGroup = new AttendanceWithGroup();
+				attendanceWithGroup.setAtt_id(rs.getInt("att_id"));
+				attendanceWithGroup.setId(rs.getString("id"));
+				attendanceWithGroup.setName(rs.getString("name"));
+				attendanceWithGroup.setDate(rs.getDate("date"));
+				attendanceWithGroup.setTime(rs.getTime("time"));
+				attendanceWithGroup.setGroup_name(rs.getString("group_name"));
+				list.add(attendanceWithGroup);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			util.close();
+		}
+		return list;
 	}
 
 }
