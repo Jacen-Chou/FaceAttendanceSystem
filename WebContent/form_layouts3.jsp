@@ -65,19 +65,18 @@
 
 <script type="text/javascript">
 
-	function modify_pass() {
-		var old_pass = document.getElementById("old_pass").value;
-		var new_pass = document.getElementById("new_pass").value;
-		var confirm_new_pass = document.getElementById("confirm_new_pass").value;
+	function set_ip() {
+		var ip_1 = document.getElementById("ip_1").value;
+		var ip_2 = document.getElementById("ip_1").value;
+
+		//alert(teaid);
+		//alert(teapassword);
 		
-		if (old_pass == "" || new_pass == "" || confirm_new_pass == "") {
+		if (ip_1 == "" || ip_2 == "") {
 			alert("请输入所有内容！");
 			return false;
-		} else if (new_pass != confirm_new_pass){
-			alert("新密码两次输入不一样！");
-			return false;
-		} {
-			document.getElementById("modify_password_form").submit();
+		} else {
+			document.getElementById("set_ip_form").submit();
 		}
 	}
 
@@ -145,33 +144,24 @@
             <div class="container">
             	<div class="mws-panel grid_8">
                 	<div class="mws-panel-header">
-                    	<span class="mws-i-24 i-key-2">修改密码</span>
+                    	<span class="mws-i-24 i-list">设置考勤IP</span>
                     </div>
                     <div class="mws-panel-body">
-                    	<form class="mws-form" action="TeaModifyPassServlet.do" id="modify_password_form" name="modify_password_form">
+                    	<form class="mws-form" action="TeaSetIpServlet.do" id="set_ip_form" name="set_ip_form">
 							<input type="hidden" name="teaid" value="${ sessionScope.teaid }"/>
                     		<div class="mws-form-inline">
                     			<div class="mws-form-row">
-                    				<label>原密码</label>
+                    				<label>IP地址</label>
                     				<div class="mws-form-item small">
-                    					<input id="old_pass" name="old_pass" type="password" class="mws-textinput" />
-                    				</div>
-                    			</div>
-                    			<div class="mws-form-row">
-                    				<label>新密码</label>
-                    				<div class="mws-form-item small">
-                    					<input id="new_pass" name="new_pass" type="password" class="mws-textinput" />
-                    				</div>
-                    			</div>
-                    			<div class="mws-form-row">
-                    				<label>确认新密码</label>
-                    				<div class="mws-form-item small">
-                    					<input id="confirm_new_pass" name="confirm_new_pass" type="password" class="mws-textinput" />
+                    					<input id="ip_1" name="ip_1" type="text" class="mws-textinput" style="width:6%;"/>
+                    					.
+                    					<input id="ip_2" name="ip_2" type="text" class="mws-textinput" style="width:6%;"/>
+                    					.*&nbsp;*&nbsp;*.*&nbsp;*&nbsp;*
                     				</div>
                     			</div>
                     		</div>
                     		<div class="mws-button-row">
-                    			<input type="button" value="&nbsp;提&nbsp;交&nbsp;" class="mws-button green" style="margin-right:15px;" onclick="modify_pass()" />
+                    			<input type="button" value="&nbsp;提&nbsp;交&nbsp;" class="mws-button green" style="margin-right:15px;" onclick="set_ip()"/>
                     			<input type="reset" value="&nbsp;清&nbsp;空&nbsp;" class="mws-button gray" />
                     		</div>
                     	</form>

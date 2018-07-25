@@ -136,6 +136,7 @@
 					<li><a href="TeaClickCreateAttGroupServlet.do" class="mws-i-24 i-multiple-users">创建考勤组</a></li>
 					<li><a href="TeaQueryAttGroup.do?teaid=${sessionScope.teaid }" class="mws-i-24 i-file-cabinet">我的考勤组</a></li>
 					<li><a href="TeaQueryAtt.do" class="mws-i-24 i-day-calendar">查看考勤记录</a></li>
+					<li><a href="form_layouts3.jsp" class="mws-i-24 i-cog-3">设置考勤IP</a></li>
 					<li><a href="TeaPersonInfoServlet.do?teaid=${ sessionScope.teaid }" class="mws-i-24 i-user">个人信息</a></li>
 					<li><a href="form_layouts2.jsp" class="mws-i-24 i-key-2">修改密码</a></li>
 				</ul>

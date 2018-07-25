@@ -9,12 +9,14 @@ import org.json.JSONObject;
 
 import com.fas.dao.AskForLeaveDao;
 import com.fas.dao.AttendanceDao;
+import com.fas.dao.IpDao;
 import com.fas.dao.StudentDao;
 import com.fas.util.GetStringRandom;
 import com.fas.util.MailUtil;
 import com.fas.util.PasswordEncryptUtil;
 import com.fas.vo.AskForLeave;
 import com.fas.vo.Attendance;
+import com.fas.vo.Ip;
 import com.fas.vo.Student;
 
 public class StudentService {
@@ -167,7 +169,15 @@ public class StudentService {
 	 */
 	public String AndroidAttendanceService(String id, String judge, String ip) {
 
-		String regex = "10\\.24\\.[0-9]{1,3}\\.[0-9]{1,3}";
+		String ip_1 = "";
+		String ip_2 = "";
+		
+		IpDao ipDao = new IpDao();
+		Ip ip_set = ipDao.queryIpById(1);
+		ip_1 = ip_set.getIp_1();
+		ip_2 = ip_set.getIp_2();
+		String regex = ip_1 + "\\." + ip_2 + "\\.[0-9]{1,3}\\.[0-9]{1,3}";
+		//String regex = "10\\.24\\.[0-9]{1,3}\\.[0-9]{1,3}";
 		if (!Pattern.matches(regex, ip)) { // IP≤ª∆•≈‰
 			return "ip_error";
 		} else { // IP∆•≈‰

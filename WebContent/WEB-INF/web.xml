@@ -172,4 +172,12 @@
     <servlet-name>TeaModifyPassServlet</servlet-name>
     <url-pattern>/TeaModifyPassServlet.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>TeaSetIpServlet</servlet-name>
+    <servlet-class>com.fas.servlet.TeaSetIpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TeaSetIpServlet</servlet-name>
+    <url-pattern>/TeaSetIpServlet.do</url-pattern>
+  </servlet-mapping>
 </web-app>
