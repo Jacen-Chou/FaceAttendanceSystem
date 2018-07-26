@@ -41,8 +41,8 @@ public class MailSendTest extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		//测试邮件直接发送
 		StudentDao stuDao = new StudentDao();
-				
 		Student s = new Student();
 		s.setStuId("41500011");
 		s.setStuName("测试学生11");
