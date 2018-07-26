@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fas.dao.StudentDao;
+import com.fas.util.GetStringRandom;
 import com.fas.util.MailUtil;
 import com.fas.vo.Student;
 
@@ -43,15 +44,15 @@ public class MailSendTest extends HttpServlet {
 		StudentDao stuDao = new StudentDao();
 				
 		Student s = new Student();
-		s.setStuId("123456");
-		s.setStuName("测试学生1");
+		s.setStuId("41500011");
+		s.setStuName("测试学生11");
 		s.setStuPassword("147258");
 		s.setStuEmail("774845313@qq.com");
 		stuDao.insertStu(s);
-		
+		String password = GetStringRandom.getStringRandom(6);
 		MailUtil mailUtil = new MailUtil();
 		try {
-			mailUtil.mailSend(s, "pass");
+			mailUtil.mailSend(s, password);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
